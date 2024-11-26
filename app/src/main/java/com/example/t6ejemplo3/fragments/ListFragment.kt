@@ -30,6 +30,8 @@ class ListFragment : Fragment(), OnClickListener {
 
     private lateinit var binding: FragmentListBinding
 
+    private lateinit var listener: CorreosListener
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -56,8 +58,14 @@ class ListFragment : Fragment(), OnClickListener {
         return binding.root
     }
 
-    override fun onClick(c: Correo) {
+    override fun onClick(correo: Correo) {
+        if (listener != null){
+            listener.onCorreoSeleccionado(correo)
+        }
 
+    }
+    fun setCorreosListener(listener: CorreosListener){
+        this.listener=listener
     }
 
 
